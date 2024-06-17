@@ -34,19 +34,16 @@ public class SaveActionListener extends ActionListenerBase {
                     }
                 }
 
-                ApplicationManager.getApplication().invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (FileTreeNode node : nodes) {
-                            node.setImageBuffer(null);
-                            ((DefaultTreeModel) dialog.getTree().getModel()).nodeChanged(node);
-                        }
-
-                        dialog.getButtonCancel().setText("Close");
-                        dialog.getButtonCancel().setEnabled(true);
-                        dialog.getButtonProcess().setEnabled(true);
-                        dialog.getRootPane().setDefaultButton(dialog.getButtonProcess());
+                ApplicationManager.getApplication().invokeLater(() -> {
+                    for (FileTreeNode node : nodes) {
+                        node.setImageBuffer(null);
+                        ((DefaultTreeModel) dialog.getTree().getModel()).nodeChanged(node);
                     }
+
+                    dialog.getButtonCancel().setText("Close");
+                    dialog.getButtonCancel().setEnabled(true);
+                    dialog.getButtonProcess().setEnabled(true);
+                    dialog.getRootPane().setDefaultButton(dialog.getButtonProcess());
                 });
             }
         });

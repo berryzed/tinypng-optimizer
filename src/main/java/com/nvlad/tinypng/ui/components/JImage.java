@@ -134,7 +134,7 @@ public class JImage extends JPanel {
     private BufferedImage prepareChessboardBackground() {
         final BufferedImage image = UIUtil.createImage(myRect.width, myRect.height, BufferedImage.TYPE_INT_RGB);
         final Graphics graphics = image.getGraphics();
-        boolean even = true;
+        boolean even;
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, myRect.width, myRect.height);
         graphics.setColor(Color.LIGHT_GRAY);

@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TinyPNGErrorInfo {
-    private static Pattern errorPattern = Pattern.compile("(.+)\\s\\(HTTP (\\d+)/(.+)\\)");
+    private static final Pattern ERROR_PATTERN = Pattern.compile("(.+)\\s\\(HTTP (\\d+)/(.+)\\)");
 
     public String message;
     public int code;
@@ -14,7 +14,7 @@ public class TinyPNGErrorInfo {
 
     @Nullable
     public static TinyPNGErrorInfo parse(String errorMessage) {
-        final Matcher matcher = errorPattern.matcher(errorMessage);
+        final Matcher matcher = ERROR_PATTERN.matcher(errorMessage);
         TinyPNGErrorInfo error = null;
         if (matcher.matches()) {
             error = new TinyPNGErrorInfo();
